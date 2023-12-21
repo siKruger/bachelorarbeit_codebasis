@@ -6,6 +6,50 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
+}
+
+model Participant {
+  firstName      String
+  lastName       String
+  participant_pk Int            @id @default(autoincrement())
+  Participates   Participates[]
+}
+
+model Assignment {
+  title         String
+  description   String
+  assignment_pk Int    @id @default(autoincrement())
+
+  course    Course @relation(fields: [course_pk], references: [course_pk])
+  course_pk Int
+}
+
+model Instructor {
+  firstName     String
+  lastName      String
+  instructor_pk Int     @id @default(autoincrement())
+  Course        Course?
+}
+
+model Course {
+  course_name   String
+  max_capacity  String
+  course_pk     Int            @id @default(autoincrement())
+  deadline      DateTime?
+  Participates  Participates[]
+  Assignment    Assignment[]
+  instructor    Instructor     @relation(fields: [instructor_pk], references: [instructor_pk])
+  instructor_pk Int            @unique
+}
+
+model Participates {
+  participant    Participant @relation(fields: [participant_pk], references: [participant_pk])
+  participant_pk Int
+
+  course    Course @relation(fields: [course_pk], references: [course_pk])
+  course_pk Int
+
+  @@id([participant_pk, course_pk])
 }
