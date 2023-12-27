@@ -35,9 +35,8 @@ model Instructor {
 
 model Course {
   course_name   String
-  max_capacity  String
+  max_capacity  Int
   course_pk     Int            @id @default(autoincrement())
-  deadline      DateTime?
   Participates  Participates[]
   Assignment    Assignment[]
   instructor    Instructor     @relation(fields: [instructor_pk], references: [instructor_pk])

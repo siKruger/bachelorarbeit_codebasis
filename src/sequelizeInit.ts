@@ -1,17 +1,18 @@
-import {DataTypes, INTEGER} from "sequelize";
+import {DataTypes} from "sequelize";
 
 const { Sequelize } = require('sequelize');
 
 // Option 2: Passing parameters separately (sqlite)
 const sequelize = new Sequelize({
     dialect: 'sqlite',
-    storage: '../databases/sequelize.sqlite'
+    storage: 'sequelize.sqlite',
+    logging: false
 });
 
 console.log("Starting sequelize database generation...")
 const start = Date.now();
 
-const participant = sequelize.define('Participant', {
+export const participant = sequelize.define('Participant', {
     firstName: {
         type: DataTypes.STRING,
     },
@@ -24,7 +25,7 @@ const participant = sequelize.define('Participant', {
     }
 })
 
-const course = sequelize.define('Course', {
+export const course = sequelize.define('Course', {
     course_name: {
         type: DataTypes.STRING,
     },
@@ -35,12 +36,9 @@ const course = sequelize.define('Course', {
         type: DataTypes.INTEGER,
         primaryKey: true
     },
-    deadline: {
-        type: DataTypes.DATE,
-    }
 })
 
-const assignment = sequelize.define('Assignment', {
+export const assignment = sequelize.define('Assignment', {
     title: {
         type: DataTypes.STRING,
     },
@@ -53,7 +51,7 @@ const assignment = sequelize.define('Assignment', {
     }
 })
 
-const instructor = sequelize.define('Instructor', {
+export const instructor = sequelize.define('Instructor', {
     firstName: {
         type: DataTypes.STRING,
     },
@@ -66,13 +64,15 @@ const instructor = sequelize.define('Instructor', {
     }
 })
 
-instructor.hasOne(course)
-course.belongsTo(instructor)
+instructor.hasOne(course, {foreignKey: {
+        name: "instructor_pk"
+    }})
+// course.belongsTo(instructor)
 
 course.hasMany(assignment)
 assignment.belongsTo(course)
 
-const participates = sequelize.define('Participates', {
+export const participates = sequelize.define('Participates', {
     participant_pk: {
         type: DataTypes.INTEGER,
         references: {

@@ -3,37 +3,40 @@ import {
     Column,
     DataSource,
     Entity,
-    JoinColumn, JoinTable, ManyToMany, ManyToOne,
+    JoinColumn,
+    JoinTable,
+    ManyToMany,
+    ManyToOne,
     OneToMany,
     OneToOne,
-    PrimaryColumn,
-    PrimaryGeneratedColumn, Relation
+    PrimaryGeneratedColumn,
+    Relation
 } from "typeorm"
 
 @Entity()
-class Course {
+export class Course {
     @Column()
     course_name: string
 
     @Column()
     max_capacity: number
 
-    @Column()
-    deadline: Date
-
     @PrimaryGeneratedColumn()
     course_pk: number
 
     @OneToOne(() => Instructor)
-    @JoinColumn()
+    @JoinColumn({name: "instructor_pk"})
     instructor: Relation<Instructor>
+
+    @Column()
+    instructor_pk: number
 
     @OneToMany(() => Assignment, (assignment) => assignment.course)
     assignments: Relation<Assignment[]>
 }
 
 @Entity()
-class Assignment {
+export class Assignment {
     @Column()
     title: string
 
@@ -48,7 +51,7 @@ class Assignment {
 }
 
 @Entity()
-class Instructor {
+export class Instructor {
     @Column()
     firstName: string
 
@@ -60,7 +63,7 @@ class Instructor {
 }
 
 @Entity()
-class Participant {
+export class Participant {
     @Column()
     firstName: string
 
@@ -75,9 +78,11 @@ class Participant {
     participates: Course
 }
 
+const start = Date.now();
+
 const AppDataSource = new DataSource({
     type: "sqlite",
-    database: "../databases/typeorm.sqlite",
+    database: "typeorm.sqlite",
     entities: [Participant, Instructor, Assignment, Course],
     synchronize: true,
     logging: false,
@@ -88,6 +93,7 @@ const AppDataSource = new DataSource({
 // once in your application bootstrap
 AppDataSource.initialize()
     .then(() => {
-        console.log("finished generating")
+        const end = Date.now();
+        console.log(`Generated TypeORM Database definitions... ${end - start} ms`)
     })
     .catch((error) => console.log(error))
