@@ -7,7 +7,8 @@
     "wipeDatabase": "rimraf --glob sequelize.sqlite && rimraf --glob typeorm.sqlite && rimraf --glob prisma/dev.db",
     "generateDatabase": "npx prisma migrate dev && npx ts-node src/sequelizeInit.ts && npx ts-node src/typeormInit.ts",
     "wipeAndCreate": "npm run wipeDatabase && npm run generateDatabase",
-    "timeTest": "npm run wipeDatabase && npm run generateDatabase && npx ts-node src/timeBehaviourTesting.ts"
+    "timeTest": "npm run wipeDatabase && npm run generateDatabase && npx ts-node src/timeBehaviourTesting.ts",
+    "analysabilityTest": "npm run wipeDatabase && npm run generateDatabase && npx ts-node src/analysabilityTesting.ts"
   },
   "keywords": [],
   "author": "",

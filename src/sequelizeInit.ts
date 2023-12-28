@@ -66,8 +66,12 @@ export const instructor = sequelize.define('Instructor', {
 
 instructor.hasOne(course, {foreignKey: {
         name: "instructor_pk"
-    }})
-// course.belongsTo(instructor)
+    },
+constraints: false})
+// course.belongsTo(instructor, {foreignKey: {
+//     name: "instructor_pk",
+// },
+// onDelete: "cascade"})
 
 course.hasMany(assignment)
 assignment.belongsTo(course)

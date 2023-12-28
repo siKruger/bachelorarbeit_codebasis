@@ -1,7 +1,6 @@
 import {DataSource} from "typeorm";
 import {Assignment, Course, Instructor, Participant} from "./typeormInit";
 import {PrismaClient} from '@prisma/client'
-import {Sequelize} from "sequelize";
 import {instructor} from "./sequelizeInit";
 
 const dataset = {firstName:"Maria",lastName:"Hardy",instructor_pk: 1}
@@ -39,7 +38,7 @@ const prismaAnalysability = async () => {
         }
     })
 }
-// prismaAnalysability().then(() => console.log("finished prisma"))
+await prismaAnalysability()
 
 const typeormAnalysability = async () => {
     const AppDataSource = new DataSource({
@@ -49,8 +48,9 @@ const typeormAnalysability = async () => {
         synchronize: true,
         logging: "all",
     })
+    const typeOrmDatasource = await AppDataSource.initialize()
 
-    const instructorRepo = AppDataSource.getRepository(Instructor)
+    const instructorRepo = typeOrmDatasource.getRepository(Instructor)
 
     await instructorRepo.save(instructorRepo.create({...dataset}))
 
@@ -63,16 +63,10 @@ const typeormAnalysability = async () => {
 
     await instructorRepo.delete({instructor_pk: 1})
 }
-// typeormAnalysability()
+await typeormAnalysability()
 
 const sequelizeAnalysability = async () => {
-    const sequelize = new Sequelize({
-        dialect: 'sqlite',
-        storage: 'sequelize.sqlite',
-        logging: true
-    });
-
-    const usr = await instructor.create({...dataset})
+    await instructor.create({...dataset})
 
     const user = await instructor.findByPk(1)
 
@@ -81,7 +75,7 @@ const sequelizeAnalysability = async () => {
     await instructor.destroy({
         where: {
             instructor_pk: 1
-        }
+        },
     })
 }
-sequelizeAnalysability().then(() => console.log("\n\n\n\n"))
+await sequelizeAnalysability()

@@ -39,8 +39,8 @@ model Course {
   course_pk     Int            @id @default(autoincrement())
   Participates  Participates[]
   Assignment    Assignment[]
-  instructor    Instructor     @relation(fields: [instructor_pk], references: [instructor_pk])
-  instructor_pk Int            @unique
+  instructor    Instructor?    @relation(fields: [instructor_pk], references: [instructor_pk])
+  instructor_pk Int?           @unique
 }
 
 model Participates {
