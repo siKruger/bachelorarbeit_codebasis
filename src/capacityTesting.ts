@@ -49,7 +49,6 @@ const prismaTest = async () => {
 
   return timeSum;
 };
-prismaTest().then((time) => console.log(`Prisma time ${time} ms`));
 
 /**
  * TypeORM
@@ -95,7 +94,6 @@ const typeORMTest = async () => {
 
   return timeSum;
 };
-typeORMTest().then((time) => console.log(`TypeORM time ${time} ms`));
 
 const sequelizeTest = async () => {
   let timeSum = 0;
@@ -121,11 +119,17 @@ const sequelizeTest = async () => {
   return timeSum;
 };
 
-const executeTest = () => {
+const executeTest = async () => {
   const times = { prisma: [], sequelize: [], typeorm: [] };
+  const seqTime = await sequelizeTest();
+  times.sequelize.push(seqTime);
 
-  sequelizeTest().then((time) => times.sequelize.push(time));
-  prismaTest().then((time) => times.prisma.push(time));
-  typeORMTest().then((time) => times.typeorm.push(time));
+  const prisTime = await prismaTest();
+  times.prisma.push(prisTime);
+
+  const typeOrmTime = await typeORMTest();
+  times.typeorm.push(typeOrmTime);
+
+  console.table(times);
 };
 executeTest();
