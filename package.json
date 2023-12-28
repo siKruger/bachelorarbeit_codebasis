@@ -7,7 +7,7 @@
     "wipeDatabase": "rimraf --glob sequelize.sqlite && rimraf --glob typeorm.sqlite && rimraf --glob prisma/dev.db",
     "generateDatabase": "npx prisma migrate dev && npx ts-node src/sequelizeInit.ts && npx ts-node src/typeormInit.ts",
     "wipeAndCreate": "npm run wipeDatabase && npm run generateDatabase",
-    "timeTest": "npm run wipeDatabase && npm run generateDatabase && npx ts-node src/timeBehaviourTesting.ts",
+    "timeTest": "npm run wipeDatabase && npm run generateDatabase && npx ts-node src/capacityTesting.ts",
     "analysabilityTest": "npm run wipeDatabase && npm run generateDatabase && npx ts-node src/analysabilityTesting.ts"
   },
   "keywords": [],
@@ -15,9 +15,10 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^20.10.5",
-    "@typescript-eslint/eslint-plugin": "^6.16.0",
-    "@typescript-eslint/parser": "^6.16.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
     "eslint": "^8.56.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
     "prisma": "^5.7.1",
     "rimraf": "^5.0.5",
     "ts-node": "^10.9.2",
