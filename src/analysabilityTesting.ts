@@ -38,7 +38,7 @@ const prismaAnalysability = async () => {
         }
     })
 }
-await prismaAnalysability()
+
 
 const typeormAnalysability = async () => {
     const AppDataSource = new DataSource({
@@ -63,7 +63,7 @@ const typeormAnalysability = async () => {
 
     await instructorRepo.delete({instructor_pk: 1})
 }
-await typeormAnalysability()
+
 
 const sequelizeAnalysability = async () => {
     await instructor.create({...dataset})
@@ -78,4 +78,13 @@ const sequelizeAnalysability = async () => {
         },
     })
 }
-await sequelizeAnalysability()
+
+const executeTest = async () => {
+    await prismaAnalysability()
+    console.log("prisma \n\n")
+    await typeormAnalysability()
+    console.log("typeorm \n\n")
+    await sequelizeAnalysability()
+    console.log("sequelize \n\n")
+}
+executeTest()

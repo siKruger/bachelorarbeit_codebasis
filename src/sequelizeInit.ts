@@ -1,12 +1,11 @@
-import {DataTypes} from "sequelize";
+import {DataTypes, Sequelize} from "sequelize";
 
-const { Sequelize } = require('sequelize');
 
 // Option 2: Passing parameters separately (sqlite)
 const sequelize = new Sequelize({
     dialect: 'sqlite',
     storage: 'sequelize.sqlite',
-    logging: false
+    logging: console.log
 });
 
 console.log("Starting sequelize database generation...")
