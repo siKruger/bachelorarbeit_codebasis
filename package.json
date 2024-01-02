@@ -9,7 +9,8 @@
     "wipeAndCreate": "npm run wipeDatabase && npm run generateDatabase",
     "capacityTest": "npm run wipeAndCreate && npx ts-node src/capacityTest/prisma.ts && npx ts-node src/capacityTest/sequelize.ts && npx ts-node src/capacityTest/typeorm.ts",
     "analysabilityTest": "npm run wipeAndCreate && npx ts-node src/analysabilityTest/prisma.ts && npx ts-node src/analysabilityTest/sequelize.ts && npx ts-node src/analysabilityTest/typeorm.ts",
-    "coExistanceTest": "npm run wipeAndCreate && npx ts-node src/coExistingTest/prisma.ts && npx ts-node src/coExistingTest/sequelize.ts && npx ts-node src/coExistingTest/typeorm.ts"
+    "coExistanceTest": "npm run wipeAndCreate && npx ts-node src/coExistingTest/prisma.ts && npx ts-node src/coExistingTest/sequelize.ts && npx ts-node src/coExistingTest/typeorm.ts",
+    "timeBehaviourTest": "npm run wipeAndCreate && npx ts-node src/timeBehaviourTest/prisma.ts && npx ts-node src/timeBehaviourTest/sequelize.ts && npx ts-node src/timeBehaviourTest/typeorm.ts"
   },
   "keywords": [],
   "author": "",

@@ -3,6 +3,7 @@ import {
   Assignment, Course, Instructor, Participant,
 } from '../typeormInit';
 import { mockingCourse, mockingInstructors } from '../mockData';
+import { executeTimeBehaviour } from './testRunner';
 
 const typeORMTest = async (iteration: number) => {
   const AppDataSource = new DataSource({
@@ -22,25 +23,29 @@ const typeORMTest = async (iteration: number) => {
   for (const val of mockingInstructors) {
     const typeormStart = Date.now();
 
-    await instructorRepo.save(instructorRepo.create({ ...val }));
-    const typeormEnd = Date.now();
-
-    timeSum += typeormEnd - typeormStart;
-  }
-
-  for (const val of mockingCourse) {
-    const typeormStart = Date.now();
-
-    await courseRepo.save(courseRepo.create({
-      course_pk: val.course_pk,
-      course_name: val.course_name,
-      max_capacity: val.max_capacity,
-      instructor_pk: val.instructor_pk,
+    await instructorRepo.save(instructorRepo.create({
+      firstName: val.firstName,
+      lastName: val.lastName,
     }));
     const typeormEnd = Date.now();
 
+    const courseData = mockingCourse[val.instructor_pk - 1];
+    const courseInstructorPk = val.instructor_pk + (1000 * iteration);
+
+    const courseStart = Date.now();
+
+    await courseRepo.save(courseRepo.create({
+      course_name: courseData.course_name,
+      max_capacity: courseData.max_capacity,
+      instructor_pk: courseInstructorPk,
+    }));
+
+    const courseEnd = Date.now();
+
     timeSum += typeormEnd - typeormStart;
+    timeSum += courseEnd - courseStart;
   }
 
   return timeSum;
 };
+executeTimeBehaviour('prisma', typeORMTest);
