@@ -2,8 +2,8 @@ import { DataSource } from 'typeorm';
 import { PrismaClient } from '@prisma/client';
 import {
   Assignment, Course, Instructor, Participant,
-} from './typeormInit';
-import { instructor } from './sequelizeInit';
+} from '../typeormInit';
+import { instructor } from '../sequelizeInit';
 
 const dataset = { firstName: 'Maria', lastName: 'Hardy', instructor_pk: 1 };
 

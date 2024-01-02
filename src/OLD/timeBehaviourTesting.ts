@@ -2,9 +2,9 @@ import { PrismaClient } from '@prisma/client';
 import { DataSource } from 'typeorm';
 import {
   Assignment, Course, Instructor, Participant,
-} from './typeormInit';
-import { course, instructor } from './sequelizeInit';
-import { mockingCourse, mockingInstructors } from './mockData';
+} from '../typeormInit';
+import { course, instructor } from '../sequelizeInit';
+import { mockingCourse, mockingInstructors } from '../mockData';
 
 /**
  * This file is used to test the time behaviour of prisma, typeorm and sequelize.

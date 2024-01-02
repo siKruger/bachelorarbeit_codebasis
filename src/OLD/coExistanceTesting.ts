@@ -3,8 +3,8 @@ import { PrismaClient } from '@prisma/client';
 import { DataSource } from 'typeorm';
 import {
   Assignment, Course, Instructor, Participant,
-} from './typeormInit';
-import { instructor } from './sequelizeInit';
+} from '../typeormInit';
+import { instructor } from '../sequelizeInit';
 
 const prisma = new PrismaClient();
 const AppDataSource = new DataSource({

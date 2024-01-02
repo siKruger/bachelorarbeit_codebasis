@@ -4,7 +4,7 @@ import { DataTypes, Sequelize } from 'sequelize';
 const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: 'sequelize.sqlite',
-  logging: false,
+  logging: console.log,
 });
 
 console.log('Starting sequelize database generation...');
@@ -52,6 +52,7 @@ export const assignment = sequelize.define('Assignment', {
 export const instructor = sequelize.define('Instructor', {
   firstName: {
     type: DataTypes.STRING,
+    allowNull: false,
   },
   lastName: {
     type: DataTypes.STRING,
