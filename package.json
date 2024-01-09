@@ -9,8 +9,9 @@
     "wipeAndCreate": "npm run wipeDatabase && npm run generateDatabase",
     "capacityTest": "npm run wipeAndCreate && npx ts-node src/capacityTest/prisma.ts && npx ts-node src/capacityTest/sequelize.ts && npx ts-node src/capacityTest/typeorm.ts",
     "analysabilityTest": "npm run wipeAndCreate && npx ts-node src/analysabilityTest/prisma.ts && npx ts-node src/analysabilityTest/sequelize.ts && npx ts-node src/analysabilityTest/typeorm.ts",
-    "coExistanceTest": "npm run wipeAndCreate && npx ts-node src/coExistingTest/prisma.ts && npx ts-node src/coExistingTest/sequelize.ts && npx ts-node src/coExistingTest/typeorm.ts",
-    "timeBehaviourTest": "npm run wipeAndCreate && npx ts-node src/timeBehaviourTest/prisma.ts && npx ts-node src/timeBehaviourTest/sequelize.ts && npx ts-node src/timeBehaviourTest/typeorm.ts"
+    "coExistanceTest": "npm run wipeAndCreate  && npx ts-node src/coExistingTest/sequelize.ts && npx ts-node src/coExistingTest/prisma.ts && npx ts-node src/coExistingTest/typeorm.ts",
+    "timeBehaviourTest": "npm run wipeAndCreate && npx ts-node src/timeBehaviourTest/prisma.ts && npx ts-node src/timeBehaviourTest/sequelize.ts && npx ts-node src/timeBehaviourTest/typeorm.ts",
+    "faultToleranceTest": "npm run wipeAndCreate && npx ts-node src/faultToleranceTest/prisma.ts && npx ts-node src/faultToleranceTest/sequelize.ts && npx ts-node src/faultToleranceTest/typeorm.ts"
   },
   "keywords": [],
   "author": "",
@@ -37,6 +38,7 @@
     "prime-number": "^1.0.2",
     "reflect-metadata": "^0.2.1",
     "sequelize": "^6.35.2",
+    "sieve-of-eratosthenes": "^0.0.3",
     "sqlite3": "^5.1.6",
     "typeorm": "^0.3.17"
   }
