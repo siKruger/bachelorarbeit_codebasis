@@ -1,16 +1,24 @@
-import { DataTypes, Sequelize } from 'sequelize';
+import {
+  DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize,
+} from 'sequelize';
 
 // Option 2: Passing parameters separately (sqlite)
-const sequelize = new Sequelize({
+export const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: 'sequelize.sqlite',
-  logging: console.log,
+  logging: false,
 });
 
 console.log('Starting sequelize database generation...');
 const start = Date.now();
 
-export const participant = sequelize.define('Participant', {
+interface Participant extends Model<InferAttributes<Participant>, InferCreationAttributes<Participant>> {
+  firstName: string;
+  lastName: string;
+  participant_pk: number;
+}
+
+export const participant = sequelize.define<Participant>('Participant', {
   firstName: {
     type: DataTypes.STRING,
   },
@@ -23,7 +31,14 @@ export const participant = sequelize.define('Participant', {
   },
 });
 
-export const course = sequelize.define('Course', {
+interface Course extends Model<InferAttributes<Course>, InferCreationAttributes<Course>> {
+  course_name: string;
+  max_capacity: number;
+  course_pk: number;
+  instructor_pk: number;
+}
+
+export const course = sequelize.define<Course>('Course', {
   course_name: {
     type: DataTypes.STRING,
   },
@@ -34,9 +49,19 @@ export const course = sequelize.define('Course', {
     type: DataTypes.INTEGER,
     primaryKey: true,
   },
+  instructor_pk: {
+    type: DataTypes.INTEGER,
+  },
 });
 
-export const assignment = sequelize.define('Assignment', {
+interface Assignment extends Model<InferAttributes<Assignment>, InferCreationAttributes<Assignment>> {
+  title: string;
+  description: string;
+  assignment_pk: number;
+  course_pk: number;
+}
+
+export const assignment = sequelize.define<Assignment>('Assignment', {
   title: {
     type: DataTypes.STRING,
   },
@@ -47,9 +72,18 @@ export const assignment = sequelize.define('Assignment', {
     type: DataTypes.INTEGER,
     primaryKey: true,
   },
+  course_pk: {
+    type: DataTypes.INTEGER,
+  },
 });
 
-export const instructor = sequelize.define('Instructor', {
+interface Instructor extends Model<InferAttributes<Instructor>, InferCreationAttributes<Instructor>> {
+  firstName: string;
+  lastName: string;
+  instructor_pk: number;
+}
+
+export const instructor = sequelize.define<Instructor>('Instructor', {
   firstName: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -74,8 +108,13 @@ instructor.hasOne(course, {
 // },
 // onDelete: "cascade"})
 
-course.hasMany(assignment);
-assignment.belongsTo(course);
+course.hasMany(assignment, {
+  foreignKey: {
+    name: 'course_pk',
+  },
+  constraints: false,
+});
+// assignment.belongsTo(course);
 
 export const participates = sequelize.define('Participates', {
   participant_pk: {

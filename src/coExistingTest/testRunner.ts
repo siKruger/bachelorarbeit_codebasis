@@ -1,13 +1,14 @@
-import { isPrime } from 'mathjs';
+const sieveOfErathosthenes = require('sieve-of-eratosthenes');
 
 const calcPrime = (): number => {
   const startTime = Date.now();
-  isPrime(Array.from({ length: 5000000 }, (_, index) => index));
+  // isPrime(Array.from({ length: 5000000 }, (_, index) => index));
+  sieveOfErathosthenes(50000000);
   const endTime = Date.now();
   return endTime - startTime;
 };
 
-const ITERATIONS = 10;
+const ITERATIONS = 20;
 export const executeCoExistance = async (name: string, ormCalc: () => void) => {
   const times = {
     primeOnly: [], ormIncluded: [],

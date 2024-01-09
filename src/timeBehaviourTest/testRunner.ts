@@ -1,4 +1,4 @@
-const ITERATIONS = 5;
+const ITERATIONS = 20;
 
 export const executeTimeBehaviour = async (name: string, testFunction: (iteration: number) => Promise<number>) => {
   const times = [];

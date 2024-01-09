@@ -4,7 +4,7 @@ import { executeCoExistance } from './testRunner';
 const prisma = new PrismaClient();
 
 const prismaCrud = async () => {
-  for (let i = 0; i < 5000; i += 1) {
+  for (let i = 0; i < 1000; i += 1) {
     await prisma.instructor.create({
       data: {
         firstName: 'Test',
