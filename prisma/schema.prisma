@@ -5,10 +5,15 @@ generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
+datasource sqlite {
   provider = "sqlite"
-  url      = "file:./prisma.db"
+  url      = env("DATABASE_URL")
 }
+
+// datasource mariadb {
+//   provider = "mysql"
+//   url      = "mysql://root:abcdefg@localhost:32768/prisma"
+// }
 
 model Participant {
   firstName      String

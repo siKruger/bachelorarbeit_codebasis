@@ -24,7 +24,7 @@ export class Course {
   @PrimaryGeneratedColumn()
     course_pk: number;
 
-  @OneToOne(() => Instructor, { nullable: true })
+  @OneToOne(() => Instructor, { nullable: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'instructor_pk' })
     instructor: Relation<Instructor>;
 
@@ -64,6 +64,9 @@ export class Instructor {
 
   @PrimaryGeneratedColumn()
     instructor_pk: number;
+
+  @OneToOne(() => Course, (course) => course.instructor, { nullable: true, onDelete: 'SET NULL' })
+    course: Relation<Course>;
 }
 
 @Entity()

@@ -2,12 +2,18 @@ import {
   DataTypes, InferAttributes, InferCreationAttributes, Model, Sequelize,
 } from 'sequelize';
 
-// Option 2: Passing parameters separately (sqlite)
 export const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: 'sequelize.sqlite',
   logging: false,
 });
+
+// export const sequelize = new Sequelize('sequelize', 'root', 'abcdefg', {
+//   dialect: 'mariadb',
+//   host: 'localhost',
+//   port: 32768,
+//   logging: false,
+// });
 
 console.log('Starting sequelize database generation...');
 const start = Date.now();
@@ -120,15 +126,15 @@ export const participates = sequelize.define('Participates', {
   participant_pk: {
     type: DataTypes.INTEGER,
     references: {
-      model: participant, // 'Movies' would also work
-      key: 'id',
+      model: participant,
+      key: 'participant_pk',
     },
   },
   course_pk: {
     type: DataTypes.INTEGER,
     references: {
-      model: course, // 'Actors' would also work
-      key: 'id',
+      model: course,
+      key: 'course_pk',
     },
   },
 });

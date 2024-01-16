@@ -4,16 +4,23 @@ import { sleep } from '../helper';
 
 const prisma = new PrismaClient();
 
-const continousCRUD = async () => {
-  while (true) {
-    await prisma.course.create({
-      data: {
-        course_name: faker.animal.cow(),
-        max_capacity: faker.number.int(100),
-      },
-    });
-    await sleep(500);
+const prismaCreate = async () => {
+  try {
+    for (let x = 0; x < 20; x += 1) {
+      console.log(`Writing next Dataset with Id${x + 1}`);
+      await prisma.course.create({
+        data: {
+          course_name: faker.animal.cow(),
+          max_capacity: faker.number.int(100),
+          course_pk: x + 1,
+        },
+      });
+
+      await sleep(1000);
+    }
+  } catch (e) {
+    console.log(`Prisma has crashed...${e}`);
   }
 };
 
-continousCRUD();
+prismaCreate();
