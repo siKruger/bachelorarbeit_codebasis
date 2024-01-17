@@ -10,6 +10,24 @@ const sequelizeCrud = async () => {
       firstName: 'Test',
       lastName: 'Test',
     });
+
+    await instructor.findOne({
+      where: {
+        firstName: 'Test',
+      },
+    });
+
+    await instructor.update({ lastName: 'Changed' }, {
+      where: {
+        firstName: 'Test',
+      },
+    });
+
+    await instructor.destroy({
+      where: {
+        firstName: 'Test',
+      },
+    });
   }
 };
 

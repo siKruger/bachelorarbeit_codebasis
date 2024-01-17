@@ -14,6 +14,27 @@ const prismaCrud = async () => {
         lastName: 'Test',
       },
     });
+
+    await prisma.instructor.findFirst({
+      where: {
+        firstName: 'Test',
+      },
+    });
+
+    await prisma.instructor.updateMany({
+      where: {
+        firstName: 'Test',
+      },
+      data: {
+        lastName: 'Changed',
+      },
+    });
+
+    await prisma.instructor.deleteMany({
+      where: {
+        firstName: 'Test',
+      },
+    });
   }
 };
 
