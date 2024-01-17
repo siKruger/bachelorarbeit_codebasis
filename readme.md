@@ -10,7 +10,7 @@ Ein Test setzt eine MariDB Datenbank vorraus. Folgende Verbindungsdaten müssen 
 - port: 32768
 - user: root
 - passwort: abcdefg
-- 
+
 Folgende Datenbanken müssen existieren
 - typeorm
 - sequelize
