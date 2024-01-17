@@ -1,4 +1,7 @@
-const sieveOfErathosthenes = require('sieve-of-eratosthenes');
+/**
+ * Siehe 4.4.1
+ */
+import sieveOfErathosthenes from 'sieve-of-eratosthenes';
 
 const calcPrime = (): number => {
   const startTime = Date.now();

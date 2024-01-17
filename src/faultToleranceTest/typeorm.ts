@@ -1,10 +1,12 @@
+/**
+ * Siehe 4.7.1
+ */
 import { DataSource, Repository } from 'typeorm';
 import { courseData, transactionCourseData } from './testData';
 import {
   Assignment, Course, Instructor, Participant,
 } from '../typeormInit';
 
-let instructorRepository: Repository<Instructor>;
 let courseRepository: Repository<Course>;
 let assignmentRepository: Repository<Assignment>;
 const AppDataSource = new DataSource({
@@ -101,7 +103,6 @@ const typeormRelationInsert = async () => {
 
 const executeTest = async () => {
   const typeOrmSource = await AppDataSource.initialize();
-  instructorRepository = typeOrmSource.getRepository(Instructor);
   assignmentRepository = typeOrmSource.getRepository(Assignment);
   courseRepository = typeOrmSource.getRepository(Course);
   typeormRelationInsert();

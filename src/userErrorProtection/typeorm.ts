@@ -1,4 +1,6 @@
-// TypeORM
+/**
+ * Siehe 4.6.1
+ */
 import { DataSource } from 'typeorm';
 import {
   Assignment, Course, Instructor, Participant,
@@ -14,13 +16,13 @@ const AppDataSource = new DataSource({
 const typeOrmDatasource = await AppDataSource.initialize();
 const instructorRepo = typeOrmDatasource.getRepository(Instructor);
 
-await instructorRepo.save(instructorRepo.create({
+instructorRepo.save(instructorRepo.create({
   firstName: 22,
   lastName: true,
   nstructor_pk: 1,
 }));
 
-await instructorRepo.find({
+instructorRepo.find({
   where: {
     firstName: 2,
   },
@@ -29,6 +31,6 @@ await instructorRepo.find({
   },
 });
 
-await instructorRepo.update({ firstName: '' }, { firstName: null });
+instructorRepo.update({ firstName: '' }, { firstName: null });
 
-await instructorRepo.delete({ instructor_pk: '1' });
+instructorRepo.delete({ instructor_pk: '1' });

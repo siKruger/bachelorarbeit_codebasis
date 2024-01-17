@@ -1,9 +1,12 @@
+/**
+ * Siehe 4.2.1
+ */
 import { DataSource } from 'typeorm';
 import {
   Assignment, Course, Instructor, Participant,
 } from '../typeormInit';
 import { mockingCourse, mockingInstructors } from '../mockData';
-import { executeTimeBehaviour } from './testRunner';
+import executeTimeBehaviour from './testRunner';
 
 const typeORMTest = async (iteration: number) => {
   const AppDataSource = new DataSource({

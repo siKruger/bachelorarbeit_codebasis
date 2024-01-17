@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.7.1
+ */
 import { PrismaClient } from '@prisma/client';
 import { courseData, transactionCourseData } from './testData';
 

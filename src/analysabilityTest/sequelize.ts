@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.9.1
+ */
 import { instructor } from '../sequelizeInit';
 
 const dataset = { firstName: 'Maria', lastName: 'Hardy', instructor_pk: 1 };

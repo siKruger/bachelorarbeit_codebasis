@@ -1,4 +1,6 @@
-import fs from 'fs';
+/**
+ * Siehe 4.3.1
+ */
 
 export function sleep(milliseconds: number) {
   return new Promise((resolve) => { setTimeout(resolve, milliseconds); });
@@ -32,7 +34,4 @@ export const executeCapacityTest = async (capacityFunction: (reached: { current:
 
   console.log(`After ${TEST_RUNS}, this is the result for ${name}`);
   console.table(capacity.capacityHistory);
-  if (capacity.capacityHistory[capacity.capacityHistory.length - 1]) console.log('Maximum test iterations have been reached on all runs...');
-  fs.writeFile(`${name}.txt`, `${capacity.capacityHistory}`, () => {});
-  await sleep(5000);
 };

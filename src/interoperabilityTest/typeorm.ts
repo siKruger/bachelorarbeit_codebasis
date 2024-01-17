@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.5.1
+ */
 import { DataSource } from 'typeorm';
 import {
   Assignment, Course, Instructor, Participant,
@@ -12,6 +15,12 @@ const AppDataSource = new DataSource({
 });
 const typeOrmSource = await AppDataSource.initialize();
 const instructorRepository = typeOrmSource.getRepository(Instructor);
+
+const testInstructor: Instructor = {
+  firstName: '',
+  lastName: '',
+  instructor_pk: 0,
+};
 
 const typeormCreate = await instructorRepository.create({
   instructor_pk: 'w',

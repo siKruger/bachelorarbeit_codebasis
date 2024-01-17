@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.8.1
+ */
 import { faker } from '@faker-js/faker';
 import { sleep } from '../helper';
 import { course } from '../sequelizeInit';

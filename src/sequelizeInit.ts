@@ -8,6 +8,10 @@ export const sequelize = new Sequelize({
   logging: false,
 });
 
+/* Dieser Connector ist benötigt, wenn stattdessen eine MariaDB Datenbank genutzt werden soll.
+Zeilen 5 - 9 müssen auskommentiert werden, Zeilen 15 - 20 einkommentiert.
+ */
+
 // export const sequelize = new Sequelize('sequelize', 'root', 'abcdefg', {
 //   dialect: 'mariadb',
 //   host: 'localhost',
@@ -18,7 +22,8 @@ export const sequelize = new Sequelize({
 console.log('Starting sequelize database generation...');
 const start = Date.now();
 
-interface Participant extends Model<InferAttributes<Participant>, InferCreationAttributes<Participant>> {
+export interface Participant
+  extends Model<InferAttributes<Participant>, InferCreationAttributes<Participant>> {
   firstName: string;
   lastName: string;
   participant_pk: number;
@@ -37,7 +42,7 @@ export const participant = sequelize.define<Participant>('Participant', {
   },
 });
 
-interface Course extends Model<InferAttributes<Course>, InferCreationAttributes<Course>> {
+export interface Course extends Model<InferAttributes<Course>, InferCreationAttributes<Course>> {
   course_name: string;
   max_capacity: number;
   course_pk: number;
@@ -60,7 +65,8 @@ export const course = sequelize.define<Course>('Course', {
   },
 });
 
-interface Assignment extends Model<InferAttributes<Assignment>, InferCreationAttributes<Assignment>> {
+export interface Assignment
+  extends Model<InferAttributes<Assignment>, InferCreationAttributes<Assignment>> {
   title: string;
   description: string;
   assignment_pk: number;
@@ -83,7 +89,8 @@ export const assignment = sequelize.define<Assignment>('Assignment', {
   },
 });
 
-interface Instructor extends Model<InferAttributes<Instructor>, InferCreationAttributes<Instructor>> {
+export interface Instructor
+  extends Model<InferAttributes<Instructor>, InferCreationAttributes<Instructor>> {
   firstName: string;
   lastName: string;
   instructor_pk: number;
@@ -109,10 +116,6 @@ instructor.hasOne(course, {
   },
   constraints: false,
 });
-// course.belongsTo(instructor, {foreignKey: {
-//     name: "instructor_pk",
-// },
-// onDelete: "cascade"})
 
 course.hasMany(assignment, {
   foreignKey: {
@@ -120,7 +123,6 @@ course.hasMany(assignment, {
   },
   constraints: false,
 });
-// assignment.belongsTo(course);
 
 export const participates = sequelize.define('Participates', {
   participant_pk: {

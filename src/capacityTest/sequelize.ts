@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.3.1
+ */
 import { faker } from '@faker-js/faker';
 import { instructor } from '../sequelizeInit';
 import { executeCapacityTest } from './testRunner';

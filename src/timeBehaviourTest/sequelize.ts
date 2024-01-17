@@ -1,6 +1,9 @@
+/**
+ * Siehe 4.2.1
+ */
 import { mockingCourse, mockingInstructors } from '../mockData';
 import { course, instructor } from '../sequelizeInit';
-import { executeTimeBehaviour } from './testRunner';
+import executeTimeBehaviour from './testRunner';
 
 const sequelizeTest = async (iteration: number) => {
   let timeSum = 0;

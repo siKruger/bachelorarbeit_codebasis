@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.8.1
+ */
 import { PrismaClient } from '@prisma/client';
 import { faker } from '@faker-js/faker';
 import { sleep } from '../helper';

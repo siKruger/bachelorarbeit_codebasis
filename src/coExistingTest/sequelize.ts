@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.4.1
+ */
 import { instructor } from '../sequelizeInit';
 import { executeCoExistance } from './testRunner';
 

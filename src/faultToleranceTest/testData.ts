@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.7.1
+ */
 import { faker } from '@faker-js/faker';
 
 export const courseData = {

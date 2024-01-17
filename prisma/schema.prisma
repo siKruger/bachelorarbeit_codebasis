@@ -10,6 +10,9 @@ datasource sqlite {
   url      = env("DATABASE_URL")
 }
 
+// Dieser Connector ist benötigt, wenn stattdessen eine MariaDB Datenbank genutzt werden soll.
+// Zeilen 8 - 11 müssen auskommentiert werden, Zeilen 16 - 19 einkommentiert.
+
 // datasource mariadb {
 //   provider = "mysql"
 //   url      = "mysql://root:abcdefg@localhost:32768/prisma"

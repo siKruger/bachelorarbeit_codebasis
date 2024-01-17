@@ -1,3 +1,6 @@
+/**
+ * Siehe 4.9.1
+ */
 import { DataSource } from 'typeorm';
 import {
   Assignment, Course, Instructor, Participant,

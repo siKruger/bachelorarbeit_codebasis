@@ -1,4 +1,13 @@
-import { instructor } from '../sequelizeInit';
+/**
+ * Siehe 4.5.1
+ */
+import { Instructor, instructor } from '../sequelizeInit';
+
+const testInstructor: Instructor = {
+  firstName: '',
+  lastName: '',
+  instructor_pk: 0,
+};
 
 const sequelizeCreate = await (instructor.build({
   instructor_pk: 'w',

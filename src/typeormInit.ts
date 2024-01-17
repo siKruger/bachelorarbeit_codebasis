@@ -1,3 +1,4 @@
+// eslint-disable-next-line max-classes-per-file
 import 'reflect-metadata';
 import {
   Column,
@@ -24,6 +25,7 @@ export class Course {
   @PrimaryGeneratedColumn()
     course_pk: number;
 
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   @OneToOne(() => Instructor, { nullable: true, onDelete: 'SET NULL' })
   @JoinColumn({ name: 'instructor_pk' })
     instructor: Relation<Instructor>;
@@ -31,6 +33,7 @@ export class Course {
   @Column({ nullable: true })
     instructor_pk: number;
 
+  // eslint-disable-next-line @typescript-eslint/no-use-before-define
   @OneToMany(() => Assignment, (assignment) => assignment.course)
     assignments: Relation<Assignment[]>;
 }
@@ -95,9 +98,6 @@ const AppDataSource = new DataSource({
   logging: false,
 });
 
-// to initialize the initial connection with the database, register all entities
-// and "synchronize" database schema, call "initialize()" method of a newly created database
-// once in your application bootstrap
 AppDataSource.initialize()
   .then(() => {
     const end = Date.now();

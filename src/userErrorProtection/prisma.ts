@@ -1,8 +1,11 @@
+/**
+ * Siehe 4.6.1
+ */
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-await prisma.instructor.create({
+prisma.instructor.create({
   data: {
     firstName: 22,
     lastName: true,
@@ -10,7 +13,7 @@ await prisma.instructor.create({
   },
 });
 
-await prisma.instructor.findMany({
+prisma.instructor.findMany({
   where: {
     firstName: 2,
   },
@@ -19,7 +22,7 @@ await prisma.instructor.findMany({
   },
 });
 
-await prisma.instructor.update({
+prisma.instructor.update({
   where: {
     firstName: '',
   },
@@ -28,7 +31,7 @@ await prisma.instructor.update({
   },
 });
 
-await prisma.instructor.delete({
+prisma.instructor.delete({
   where: {
     instructor_pk: '1',
   },

@@ -1,6 +1,9 @@
+/**
+ * Siehe 4.2.1
+ */
 import { PrismaClient } from '@prisma/client';
 import { mockingCourse, mockingInstructors } from '../mockData';
-import { executeTimeBehaviour } from './testRunner';
+import executeTimeBehaviour from './testRunner';
 
 const prismaTest = async (iteration: number) => {
   const prisma = new PrismaClient();
