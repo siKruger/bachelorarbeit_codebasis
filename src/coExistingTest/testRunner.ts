@@ -1,11 +1,10 @@
 /**
- * Siehe 4.4.1
+ * Siehe 5.3.1
  */
 import sieveOfErathosthenes from 'sieve-of-eratosthenes';
 
 const calcPrime = (): number => {
   const startTime = Date.now();
-  // isPrime(Array.from({ length: 5000000 }, (_, index) => index));
   sieveOfErathosthenes(50000000);
   const endTime = Date.now();
   return endTime - startTime;

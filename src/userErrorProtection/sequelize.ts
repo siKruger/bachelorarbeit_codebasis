@@ -1,5 +1,5 @@
 /**
- * Siehe 4.6.1
+ * Siehe 5.4.1
  */
 import { instructor } from '../sequelizeInit';
 

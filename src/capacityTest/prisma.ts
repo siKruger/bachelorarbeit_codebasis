@@ -1,5 +1,5 @@
 /**
- * Siehe 4.3.1
+ * Siehe 5.2.2
  */
 import { faker } from '@faker-js/faker';
 import { PrismaClient } from '@prisma/client';

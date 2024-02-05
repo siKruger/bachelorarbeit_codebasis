@@ -1,11 +1,10 @@
 /**
- * Siehe 4.5.1
+ * Siehe 5.3.2
  */
 import { Instructor, PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const testInstructor: Instructor = {
   firstName: '',
   lastName: '',

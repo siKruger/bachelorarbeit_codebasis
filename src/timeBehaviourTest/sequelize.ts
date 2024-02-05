@@ -1,5 +1,5 @@
 /**
- * Siehe 4.2.1
+ * Siehe 5.2.1
  */
 import { mockingCourse, mockingInstructors } from '../mockData';
 import { course, instructor } from '../sequelizeInit';

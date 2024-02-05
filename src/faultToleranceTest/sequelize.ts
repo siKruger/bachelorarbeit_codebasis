@@ -1,5 +1,5 @@
 /**
- * Siehe 4.7.1
+ * Siehe 5.5.1
  */
 import { courseData, transactionCourseData } from './testData';
 import { assignment, course, sequelize } from '../sequelizeInit';

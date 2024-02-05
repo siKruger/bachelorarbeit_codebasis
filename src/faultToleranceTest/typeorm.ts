@@ -1,5 +1,5 @@
 /**
- * Siehe 4.7.1
+ * Siehe 5.5.1
  */
 import { DataSource, Repository } from 'typeorm';
 import { courseData, transactionCourseData } from './testData';

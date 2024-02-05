@@ -1,5 +1,5 @@
 /**
- * Siehe 4.2.1
+ * Siehe 5.2.1
  */
 const ITERATIONS = 20;
 
