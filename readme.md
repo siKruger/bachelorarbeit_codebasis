@@ -5,7 +5,7 @@ gehört.
 Die einzelnen Tests sind in ihren entsprechend benannten Packages zu finden. Ferner exisiert eine Auswahl an NPM Scripts, die für die automatisierte Testdurchführung genutzt werden können.
 Standardmäßig wird eine SQLite Datenbank verwendet. Es besteht kein Handlungsbedarf.
 
-Ein Test setzt eine MariDB Datenbank vorraus. Folgende Verbindungsdaten müssen hierbei gelten:
+Ein Test setzt eine MariaDB Datenbank vorraus. Folgende Verbindungsdaten müssen hierbei gelten:
 - host: 'localhost'
 - port: 32768
 - user: root
